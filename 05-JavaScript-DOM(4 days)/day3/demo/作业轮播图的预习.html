@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.carousel{
+			width: 665px;
+			height: 442px;
+			border: 1px solid red;
+			margin: 50px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.carousel .m_unit{
+			width: 5000px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.carousel .m_unit ul{
+			list-style: none;
+		}
+		.carousel .m_unit ul li{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<div class="m_unit" id="m_unit">
+			<ul>
+				<li><a href=""><img src="images/0.jpg" alt="" /></a></li>
+				<li><a href=""><img src="images/1.jpeg" alt="" /></a></li>
+				<li><a href=""><img src="images/2.jpeg" alt="" /></a></li>
+				<li><a href=""><img src="images/3.jpeg" alt="" /></a></li>
+				<li><a href=""><img src="images/4.jpeg" alt="" /></a></li>
+				<li><a href=""><img src="images/5.jpeg" alt="" /></a></li>
+				<li><a href=""><img src="images/0.jpg" alt="" /></a></li>
+			</ul>
+		</div>
+	</div>
+	<input type="button" value="左左左左左左" id="leftBtn"/>
+	<input type="button" value="右右右右右右" id="rightBtn"/>
+	
+	<script type="text/javascript" src="animate.js"></script>
+	<script type="text/javascript">
+		var m_unit = document.getElementById("m_unit");
+		var rightBtn = document.getElementById("rightBtn");
+		var leftBtn = document.getElementById("leftBtn");
+
+		var idx = 0;
+
+		rightBtn.onclick = function(){
+			idx ++;
+
+			animate(m_unit,{"left":-665 * idx},500,function(){
+				//回调函数，就是动画执行完毕之后做的事情
+				if(idx > 5){
+					m_unit.style.left = 0 + "px";
+					idx = 0;
+				}
+			});
+		}
+	</script>
+</body>
+</html>

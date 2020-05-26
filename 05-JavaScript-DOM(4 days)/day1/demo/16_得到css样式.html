@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p{
+			border:none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" style="width:200px;height:200px;background-color:red;border:10px solid blue;border-top-style:dashed;font-size:50px;"></div>
+
+	<script type="text/javascript">
+		var oBox = document.getElementById("box");
+		console.log(oBox.style.backgroundColor);
+		console.log(oBox.style.borderTopStyle);
+		console.log(oBox.style.fontSize);
+	</script>
+
+	<p id="pp">我是pp</p>
+
+	<script type="text/javascript">
+		var oP = document.getElementById("pp");
+		oP.style.backgroundColor = "skyblue";
+		oP.style.fontSize = "100px";
+		oP.style.border = "10px solid red";
+	</script>
+</body>
+</html>

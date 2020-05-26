@@ -1,0 +1,11 @@
+把今天重点案例重写：
+	轮播图、选项卡、表格隔行变色、全选、计算后样式的轮子
+	
+预习一下这些破东西：
+	offsetLeft
+	offsetTop
+	offsetWidth
+	offsetHeight
+	clientWidth
+	clientHeight
+	手册看一下，《高三》找找。

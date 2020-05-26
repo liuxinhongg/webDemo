@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p{
+			width: 60px;
+			height: 60px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+
+	<script type="text/javascript">
+		var oDiv = document.getElementById("box");
+
+		//可以封装一个children函数，这个函数返回obj的所有节点儿子
+		function children(obj,num){
+			var arr = [];	//存放所有儿子
+			for(var i = 0 ; i < obj.childNodes.length ; i++){
+				//寻找真正的HTML节点，不要考虑文本：
+				if(obj.childNodes[i].nodeType == 1){
+					arr.push(obj.childNodes[i]);
+				}
+			}
+			//返回的是：如果用户传入了num，返回某一个儿子；如果没有num返回所有儿子
+			return num ? arr[num] : arr;
+		}
+
+		children(oDiv)[2].style.backgroundColor = "red";
+		children(oDiv,3).style.backgroundColor = "green";
+	</script>
+</body>
+</html>

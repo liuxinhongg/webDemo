@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.content {
+				width: 1200px;
+				margin: 30px auto;
+				overflow: hidden;
+			}
+			
+			.item {
+				width: 280px;
+				height: 430px;
+				margin: 8px;
+				float: left;
+				border: 1px solid red;
+			}
+			
+			.item img {
+				width: 100%;
+				height: 300px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content">
+
+		</div>
+	</body>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		function getGoods(goodsType) {
+
+			$.ajax({
+				type: "get",
+				url: "http://127.0.0.1/w/website/findGoodsList",
+				data:{
+					"platId":"d0a500ecf8ab41aa9ffe8e18ac6419e1",
+					"info":goodsType
+				},
+				async: true,
+				success: function(data) {
+					var goodsList = data.data.tbk_dg_material_optional_response.result_list.map_data;
+					console.log(goodsList)
+					var str = "";
+					$.each(goodsList, function(i) {
+
+						str += `		
+					<div class="item">
+							<a href="${goodsList[i].coupon_share_url}">	
+								<img src="${goodsList[i].pict_url}"/>
+							</a>	
+							<p>${goodsList[i].title}</p>
+							<p>
+								<a href="${goodsList[i].coupon_share_url}">	领劵:${goodsList[i].coupon_amount}</a>	
+							</p>
+							<p>现价:${goodsList[i].zk_final_price}</p>
+							<p>卷后价格:${goodsList[i].zk_final_price-goodsList[i].coupon_amount}</p>
+							
+					</div>`;
+					});
+					$(".content").append("<h2 style='margin: 9px;padding: 20px 0;border-bottom: 3px solid black;'>"+goodsType+"</h2>")
+					
+					$(".content").append(str);
+
+				}
+			});
+
+		}
+	
+		getGoods("箱包");
+		
+		getGoods("女装");
+		
+		getGoods("内衣");
+		 
+		getGoods("数码");
+		getGoods("手机");
+	</script>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<title>判断点是否在矩形区域内</title>
+
+		<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=11KwM4SL3gsDG3y1NFOc7QjEncqwmTlK"></script>
+
+		<script type="text/javascript" src="js/GeoUtils.js"></script>
+
+	</head>
+
+	<body>
+		<!--百度地图容器-->
+		<div style="width:100%;height:100%;position: absolute;" id="map"></div>
+
+	</body>
+
+	<script type="text/javascript">
+		//创建地图
+		var map = new BMap.Map("map");
+		
+		var point = new BMap.Point(118.658953, 37.425953); //设置地图的中心
+		map.centerAndZoom(point, 17); //设置地图的层级
+		map.addControl(new BMap.MapTypeControl()); //设置地图的类型控件
+		map.enableScrollWheelZoom(true); //滚轮滑动缩放地图
+
+		//添加多边形地理围栏
+		var circle = new BMap.Circle(mPoint, 1000, {
+			fillColor: "blue",
+			strokeWeight: 1,
+			fillOpacity: 0.3,
+			strokeOpacity: 0.3,
+			enableEditing: true
+		});
+
+		map.addOverlay(circle);
+		//判断用户是否在地理围栏内	
+		var geolocation = new BMap.Geolocation();
+		var dingwei = setInterval(function() {
+			geolocation.getCurrentPosition(function(r) {
+				if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+					map.panTo(r.point);
+					if (BMapLib.GeoUtils.isPointInPolygon(r.point, polygon)) {
+						console.log("在监控方位内")
+					} else {
+						console.log("你已经逃离监控区域")
+					}
+				}
+			}, {
+				enableHighAccuracy: true
+			})
+		}, 2000);
+
+		//鼠标点击获取坐标
+		map.addEventListener("click", function(e) {
+			var lng = e.point.lng;
+			var lat = e.point.lat;
+			console.log("lng:" + lng)
+			console.log("lat" + lat)
+
+			var myPoint = new BMap.Point(lng, lat)
+			if (BMapLib.GeoUtils.isPointInPolygon(myPoint, polygon)) {
+				console.log("在监控方位内")
+			} else {
+				console.log("你已经逃离监控区域")
+			}
+
+		})
+
+		//判断某个点是否在区域内
+		var myPoint = new BMap.Point(118.658031, 37.425398)
+		if (BMapLib.GeoUtils.isPointInPolygon(myPoint, polygon)) {
+			console.log("在监控方位内")
+		} else {
+			console.log("你已经逃离监控区域")
+		}
+	</script>
+
+</html>

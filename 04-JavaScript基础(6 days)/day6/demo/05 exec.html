@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+// 匹配abc字符串
+var str = /abc/g;
+var reg = new RegExp('abc', 'g')
+
+var demo = 'aaaabccccbacabc';
+
+// str.exec('abcd') => [abc]
+console.log(str.exec(demo));	
+// str.exec('abcd') => [abc]
+console.log(reg.exec('aaaabccccbacabc'));
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 940px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+		}
+		.block{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 94px;
+			height: 36px;
+			background: url(images/block.png);
+		}
+		.ball{
+			position: absolute;
+			width: 27px;
+			height: 27px;
+			background: url(images/ball.png);
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+ 		<div class="ball" id="ball"></div>
+	</div>
+	
+	<script type="text/javascript">
+		var box = document.getElementById("box");
+		var oBall = document.getElementById("ball");
+
+
+		//砖块类
+		function Block(left,top,color){
+			this.left = left;
+			this.top = top;
+			this.height = 36;
+			this.width = 94;
+			this.color = color;	//color值0、1、2、3、4
+			this.alive = true;	//是否存活
+
+			this.init();
+		}
+		//初始化
+		Block.prototype.init = function(){
+			this.dom = document.createElement("div");
+			box.appendChild(this.dom);	//追加DOM
+			this.dom.className = "block";
+			this.dom.style.left = this.left + "px";
+			this.dom.style.top = this.top + "px";
+			this.dom.style.backgroundPosition = -94 * this.color + "px 0";
+		}
+		//check方法，每个转块能够检测自己有没有被小球撞到
+		Block.prototype.check = function(){
+			//检测碰到自己没有
+			//变量b就是全局变量b
+			if(b.top >= this.top - b.d && b.top < this.top && b.left >= this.left - b.d && b.left <= this.left + this.width + b.d){
+				//碰到自己的顶边
+				// this.dom.innerHTML = "干嘛碰我的顶边！";
+				b.deltaY = -b.deltaY;
+				this.hide();
+				return true;
+			}else if(b.top <= this.top + this.height && b.top >= this.top && b.left >= this.left - b.d && b.left <= this.left + this.width + b.d){
+				//碰到自己的底边
+				b.deltaY = -b.deltaY;
+				this.hide();
+				return true;
+			}else if(b.left >= this.left - b.d && b.left < this.left && b.top > this.top && b.top < this.top + this.height - b.d){
+				//碰到左边
+				b.deltaX = -b.deltaX;
+				this.hide();
+				return true;
+			}
+			else if(b.left <= this.left + this.width && b.left >= this.left && b.top > this.top && b.top < this.top + this.height - b.d){
+				//碰到右边
+				b.deltaX = -b.deltaX;
+				this.hide();
+				return true;
+			}
+
+		}
+		//消失
+		Block.prototype.hide = function(){
+			this.alive = false;
+			box.removeChild(this.dom)
+		}
+
+
+		//地图类
+		function Map(){
+			this.map = [
+				[ , , , , , , , , , ],
+				[ , ,1,1, ,1,1, , , ],
+				[ ,1,2,1, ,1,1,1, , ],
+				[ , ,3,1,1,1,2, , , ],
+				[ , , ,4,1,4, , , , ],
+				[ , , , ,2, , , , , ],
+				[ , , , , , , , , , ],
+				[ , , , , , , , , , ]
+			];
+			this.blocksArr = [];
+
+			//创建转块
+			this.createBlocks();
+
+			//检查所有转块是否被撞击
+			this.checkAllBlocks();
+		}
+		//根据地图，创建转块
+		Map.prototype.createBlocks = function(){
+			for(var row = 0 ; row < 8 ; row++){
+				for(var col = 0 ; col < 10 ; col++){
+					//如果当前这个地图位置不是undefined
+					if(this.map[row][col]){
+						this.blocksArr.push(new Block(94 * col , 36 * row , this.map[row][col]));
+					}
+				}
+			}
+		}
+		//检查所有转块是否被撞击
+		Map.prototype.checkAllBlocks = function(){
+			for(var i = 0 ; i < this.blocksArr.length ; i++){
+				if(this.blocksArr[i].alive){
+					//如果这个方块没有消失，那么执行check检测小球是否被撞击
+					var result = this.blocksArr[i].check();
+				}
+				if(result){
+					break;
+				}
+			}
+		}
+
+
+		//小球类
+		function Ball(){
+			this.left = 400;
+			this.top = 400;
+			this.d = 27; //直径
+			this.deltaX = 2;
+			this.deltaY = -1;
+			this.dom = oBall;	//dom就是ball
+
+			this.move();
+		}
+		
+		//渲染
+		Ball.prototype.render = function(){
+			this.dom.style.left = this.left + "px";
+			this.dom.style.top = this.top + "px";
+		}
+		//运动
+		Ball.prototype.move = function(){
+			var self = this;
+			//定时器
+			this.timer = setInterval(function(){
+				self.left += self.deltaX
+				self.top += self.deltaY;
+				//到游戏边框的反弹，是小球自己自理的
+				//碰边检测
+				if(self.top <= 0){
+					//碰到底边
+					self.deltaY = -self.deltaY;
+				}
+				if(self.left >= box.clientWidth - self.d || self.left <= 0){
+					//碰到左右边框
+					self.deltaX = -self.deltaX;
+				}
+
+				if(self.top >= box.clientHeight - self.d){
+					alert("GAME OVER");
+					clearInterval(self.timer);
+				}
+				//每10毫秒，都要让所有的block都执行一下自己的check方法
+				map.checkAllBlocks();
+				self.render();
+			},1);
+		}
+
+
+
+		var b = new Ball();
+		var map = new Map();
+
+	</script>
+</body>
+</html>

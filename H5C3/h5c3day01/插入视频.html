@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<video src="img/movie.mp4" autoplay controls></video>-->
+			<!--<video src="img/movie.mp4" poster="img/cat.jpg" controls></video>
+			<!--poster 属性指定视频下载时显示的图像，或者在用户点击播放按钮前显示的图像-->
+			<!--<input type="button" id="play" value="开始"/>
+			<input type="button" id="stopBut" value="暂停"/>
+			<script type="text/javascript">
+				var ovideo=document.querySelector("video");
+				var paly=document.getElementById("play");
+				var stop=document.getElementById("stopBut");
+				paly.onclick=function(){
+					ovideo.play();//视频开始播放
+				}
+				stop.onclick=function(){
+					ovideo.pause();//视频暂停播放
+				}
+			</script>-->
+			
+			<button onclick="auto()">暂停/播放</button>
+			<button onclick="big()">放大</button>
+			<button onclick="small()">缩小</button>
+			<button onclick="mormal()">普通</button>
+			<video src="img/mov_bbb.mp4" id="video1" width="420" controls></video>
+			<script type="text/javascript">
+				var ovideo1=document.getElementById("video1");
+				function auto(){
+					if(ovideo1.pause){
+						ovideo1.play();
+					}else{
+						ovideo1.pause();
+					}
+				}
+				function big(){
+					ovideo1.width=600;
+				}
+				function small(){
+					ovideo1.width=200;
+				}
+				function mormal(){
+					ovideo1.width=420;
+				}
+			</script>
+			
+	</body>
+</html>

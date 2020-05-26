@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: rebeccapurple;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       姓名： {{name}}
+        <!-- <img v-bind:src="imgs" alt="" v-bind:title="title"> -->
+        <input type="button"  v-bind:value="chuxian" v-on:click="xiaoshi">
+        <div class="box" v-if="panduan" >
+            你好啊
+        </div>
+       
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            chuxian:"消失",
+            name:"小明",
+            imgs:"1.jpg",
+            title:"米老鼠",
+            panduan:true
+        },
+        methods:{   
+            xiaoshi:function(){
+                if(this.panduan){
+                    this.panduan = false;
+                    this.chuxian = "出现";
+                }else{
+                    this.panduan = true;
+                    this.chuxian = "消失";
+                }            
+            }
+        }
+    });
+
+
+</script>
+</html>

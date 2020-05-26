@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//面向对象
+			function Point(x,y){
+				this.x=x;
+				this.y=y;
+			}
+			Point.prototype.fun=function(){
+				return "(" +this.x+","+this.y +")";
+			}
+			var point=new Point(20,30);
+			console.log(point.fun());//(20,30)
+			
+			class DiyPoint(){
+				//里面添加属性
+				//构造方法：不是自定义的在new的时候会自动调用方法
+				//初始化，通常给赋初值，准备工作
+				constructor(x,y){
+					
+				}
+				fun(){
+					return "(" +this.x+","+this.y +")";
+				}
+			}
+			var diy=new DiyPoint(20,20);
+			console.log(diy.fun());
+		</script>
+	</body>
+</html>

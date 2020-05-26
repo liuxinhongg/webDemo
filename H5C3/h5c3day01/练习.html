@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<input type="text" list="tishi">
+
+			<datalist id="tishi">-->
+				<!--<option value="石景山">石景山</option>
+				<option value="秦岭">秦岭</option>-->
+			<!--</datalist>
+			<script type="text/javascript">
+				var xhr=new XMLHttpRequest();
+				var datalist=document.querySelector("datalist");
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4){
+						var obj=JSON.parse(xhr.responseText);
+						console.log(obj);
+						var h='';
+						for(var i=0;i<obj.length;i++){
+							h+='<option value="'+obj[i]+'">'+obj[i]+'</option>';
+						}
+						datalist.innerHTML=h;
+					}
+				}
+				xhr.open("get","js.json",true);
+				xhr.send(null);
+			</script>-->
+			<!--小钢琴-->
+			<!--<style type="text/css">
+			    ul{
+					list-style: none;
+				}
+				li{
+					width: 100px;
+					height: 30px;
+					float: left;
+					margin-right: 15px;
+					position: relative;
+					background: chocolate;
+					overflow: hidden;
+				}
+				li::before{
+					content: "jump";
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: salmon;
+					top: 100%;
+					transition: all 1s ease 0s;
+				}
+				li:nth-child(1)::before{
+					background: red;
+				}
+				li:nth-child(2)::before{
+					background: orange;
+				}
+				li:nth-child(3)::before{
+					background: yellow;
+				}
+				li:nth-child(4)::before{
+					background: green;
+				}
+				li:nth-child(5)::before{
+					background: greenyellow;
+				}
+				li:nth-child(6)::before{
+					background: blue;
+				}
+				li:nth-child(7)::before{
+					background: purple;
+				}
+				li:nth-child(8)::before{
+					background: palevioletred;
+				}
+				li:hover::before{
+					top: 0;
+				}
+				li.cur::before{
+					top: 0;
+				}
+			</style>
+			
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>	
+		<div class="audio">
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			<audio src="raw/a0.ogg"></audio>
+			
+		</div>
+		<script type="text/javascript">
+			var lis=document.querySelectorAll("li");
+			var Audio=document.querySelectorAll("audio");
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				lis[i].onmouseover=function(){
+					Audio[this.index].load();//重新加载
+					Audio[this.index].play();
+				}
+			}
+			//键盘事件1、2、3、4、5、6、7、8
+			document.onkeydown=function(event){
+				if(event.keyCode>=49 && event.keyCode<=58){
+					console.log(event.keyCode)
+					Audio[event.keyCode-49].load();
+					Audio[event.keyCode-49].play();
+				}
+				for(var i=0;i<lis.length;i++){
+					lis[i].className='';
+				}
+				lis[event.keyCode-49].className="cur";
+			}
+			document.onkeyup=function(){
+				if(event.keyCode>=49 && event.keyCode<=58){
+					lis[event.keyCode-49].className='';
+				}
+			}
+		</script>-->
+		<!--<style type="text/css">
+			div{
+				width: 300px;
+				height: 50px;
+				position: absolute;
+				top: 0;
+				left: 400px;
+			}
+		</style>
+		<div>
+		<button onclick="play()">播放/暂停</button>
+		<button onclick="big()">放大</button>
+		<button onclick="small()">缩小</button>
+		<button onclick="mormal()">普通</button>
+		</div>
+		<video src="img/movie.mp4" width="300" controls></video>
+		<script type="text/javascript">
+		var video=document.querySelector("video");
+			function play(){
+				if(video.pause){
+					video.play();
+				}else{
+					video.pause();
+				}
+			}
+			function big(){
+				video.width=500;
+			}
+			function small(){
+				video.width=200;
+			}
+			function mormal(){
+				video.width=300;
+			}
+		</script>-->
+		<!--音频-->
+		<!--<input type="button" id="play" value="播放"/>
+		<input type="button" id="muted" value="静音"/>
+		<input type="number" id="volume" min="1" max="100" step="2"/>
+		
+		<video class="audioPlay" controls>
+			<source src="img/赵雷 - 成都.mp3"></source>
+		</video>
+		<script type="text/javascript">
+			var audioPlay=document.querySelector(".audioPlay");
+			var Play=document.querySelector("#play");
+			var muted=document.querySelector("#muted");
+			var volume=document.querySelector("#volume");
+			
+			
+			 Play.onclick=function(){
+				if(Play.value=="播放"){
+					this.value="暂停";
+					audioPlay.play();
+				}else{
+					this.value="播放";
+					audioPlay.pause();
+				}
+			}
+			muted.onclick=function(){
+				audioPlay.muted=!audioPlay.muted;
+			}
+			volume.onclick=function(){
+				audioPlay.volume=parseInt(this.value)/100;
+			}-->
+			<form id="biaodan">
+				<p>
+					请输入你的年龄
+					<input type="number" min="10" max="80" step="2" id="age"/>
+				</p>
+				<p>
+					请输入你的邮箱
+					<input type="email">
+				</p>
+				<p>
+					请输入你的手机号码
+					<input type="tel" pattern="^1[3,4,5,7,8]\d{9}$">
+				</p>
+				<p>
+					请输入你的生日
+					<input type="data" >
+				</p>
+				<p>
+					请输入你喜欢的颜色
+					<input type="color" >
+				</p>
+				
+				<input type="submit"/>
+			</form>
+			<input type="password" form="biaodan" name="up"/>
+			<form oninput="result.value=light.value" name="light">
+				<p>
+					请输入你的生日
+					<input type="range" min="1" max="200" step="5" name="light">
+					<output name="result"></output>
+				</p>
+			</form>
+		</script>
+	</body>
+</html>

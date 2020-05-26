@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 现在是一个数组字面量
+		// var arr = [66,4343,23];
+		
+		// 寻找原型链的终点，发现是Object.prototype
+		// console.log(arr.__proto__.__proto__.constructor)
+
+		// 函数也是对象
+		// function Dog(){
+
+		// }
+		// // console.log(Dog.__proto__.constructor)
+
+		// //给Function增加一个方法：
+		// Function.prototype.apei = function(){
+		// 	alert("啊呸");
+		// }
+
+		// //所有的函数都能调用这个方法了：
+		// Dog.apei();
+
+
+		//数组
+		var arr = [45,34,23,45,65,76,45];
+		
+		//我们可以利用原型链的机制，给数组对象增加方法
+		Array.prototype.max = function(){
+			var max = -Infinity;
+			for(var i = 0 ; i < this.length ; i++){
+				if(this[i] > max){
+					max = this[i];
+				}
+			}
+			return max;
+		}
+
+		//任何数组都能调用这个方法了：
+		console.log(arr.max());
+
+	</script>
+</body>
+</html>

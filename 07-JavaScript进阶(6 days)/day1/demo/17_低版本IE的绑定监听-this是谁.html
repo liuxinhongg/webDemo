@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box1{
+			width: 400px;
+			height: 400px;
+			background-color: yellowgreen;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+
+	<script type="text/javascript">
+		var box1 = document.getElementById("box1");
+ 
+		//绑定监听
+ 		box1.attachEvent("onclick",function(){
+ 			alert(this == window);
+ 			//我们的事件处理函数就是changeColor，但是里面的this要为box1
+ 			changeColor.call(box1);
+ 		});
+
+
+ 		function changeColor(){
+ 			this.style.backgroundColor = "red";
+ 		}
+	</script>
+</body>
+</html>

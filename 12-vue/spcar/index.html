@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+		<style type="text/css">
+			[v-cloak] {
+				display: none;
+			}
+			
+			#app {
+				width: 500px;
+				margin: 0 auto;
+			}
+			
+			table {
+				width: 100%;
+				border: 1px solid #444;
+				border-collapse: collapse;
+			}
+			
+			th,
+			td {
+				padding: 8px 16px;
+				border: 1px solid #444;
+				text-align: left;
+			}
+			
+			th {
+				background: #89abd3;
+				color: rgb(214, 224, 235);
+				font-weight: 600;
+				white-space: nowrap;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<template v-if="list.length">
+				<table>
+					<thead>
+						<tr>
+							<th>全选<input id="all" @click="selAll" type="checkbox" checked></th>
+							<th>商品名称</th>
+							<th>商品单价</th>
+							<th>购买数量</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template v-for="(item, index) in list">
+							<tr>
+								<td>
+									<input type="checkbox" :checked="item.check" @click="item.check = !item.check">
+								</td>
+								<td>
+									{{ item.name }}
+								</td>
+								<td>
+									{{ item.price }}￥
+								</td>
+								<td>
+									<button @click="reduce(index)" :disabled="item.count == 1">-</button> {{ item.count }}
+									<button @click="add(index)">+</button>
+								</td>
+								<td>
+									<button @click="remove(index)">移除</button>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+				<div>总价: ￥ {{ totalPrices }}</div>
+			</template>
+			<template v-else>
+				购物车没有商品
+			</template>
+		</div>
+
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					list: [{
+							id: 1,
+							name: 'iPhone 7',
+							price: 6188,
+							count: 1,
+							check: true,
+						},
+						{
+							id: 2,
+							name: 'iPad Pro',
+							price: 5888,
+							count: 1,
+							check: false,
+						},
+						{
+							id: 3,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: true,
+						},
+						{
+							id: 4,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: false,
+						},
+						{
+							id: 5,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: true,
+						},
+						{
+							id: 6,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: true,
+						},
+						{
+							id: 7,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: true,
+						},
+						{
+							id: 8,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: false,
+						},
+						{
+							id: 9,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: false,
+						},
+						{
+							id: 10,
+							name: 'MacBook Pro',
+							price: 21488,
+							count: 1,
+							check: false,
+						}
+						
+					]
+				},
+				methods: {
+					remove: function(index) { //移除商品
+						this.list.splice(index, 1);
+					},
+					reduce: function(index) { //减少商品
+						this.list[index].count--;
+					},
+					add: function(index) { //增加商品
+						this.list[index].count++;
+					},
+					selAll: function() { //商品全选
+						let isAll = document.querySelector('#all');
+
+						if(isAll.checked == true) {
+							this.list.forEach(function(item) {
+								item.check = true;
+							})
+						} else {
+							this.list.forEach(function(item) {
+								item.check = false;
+							})
+						}
+					}
+				},
+				computed: {
+					totalPrices: function() { //计算总价
+						let totalPrices = 0;
+
+						this.list.forEach(function(val, index) {
+							if(val.check == true)
+								totalPrices += parseFloat(val.price * val.count);
+						})
+						return totalPrices.toString().replace(/\B(?=(\d{3})+$)/g, ','); //每三位数中间加一个‘，’
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

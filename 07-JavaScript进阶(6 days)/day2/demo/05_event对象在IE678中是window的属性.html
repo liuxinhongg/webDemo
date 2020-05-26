@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1></h1>
+
+	<script type="text/javascript">
+		var h1 = document.getElementsByTagName("h1")[0];
+
+		//在页面上鼠标移动的时候，触发事件
+		document.onmousemove  = function(event){
+			event = event || window.event;
+			h1.innerHTML = "当前鼠标坐标为" + event.clientX + "," + event.clientY;
+		}
+	</script>
+</body>
+</html>

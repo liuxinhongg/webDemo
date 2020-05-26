@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		var box = document.getElementById("box");
+
+		// //信号量
+		// var state = "blue";		//0蓝 1红
+
+		// box.onclick = function(){
+		// 	if(state == "blue"){
+		// 		state = "red";
+		// 	}else{
+		// 		state = "blue";
+		// 	}
+
+		// 	this.style.backgroundColor = state;
+		// }
+
+
+		//方法2:
+		//信号量
+		var state = 0;		//0蓝 1红
+
+		box.onclick = function(){
+			if(state == 0){
+				state = 1;
+				this.style.backgroundColor = "red";
+			}else{
+				state = 0;
+				this.style.backgroundColor = "blue";
+			}
+		}
+	</script>
+</body>
+</html>

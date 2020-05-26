@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// 匹配 ^a
+var reg = /\^a/
+console.log(reg.test('bb^acc'))
+
+// 匹配\m
+var reg = /\\m/;	// 特殊字符要转义
+console.log(reg.test('asdf\\msadfasd'));	// 字符串中反斜杠要转义
+// 匹配 \\
+</script>
+</body>
+</html>

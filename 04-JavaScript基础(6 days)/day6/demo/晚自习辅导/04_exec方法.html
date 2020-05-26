@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// //exec是英语execute的意思，CEO首席执行官，E就是executive执行的
+		// //“执行”  把正则式放到字符串上执行
+		// //每次执行结果按序输出，不管结果有几个，一次只输出一个
+		// var str = "ABCDEFG1234567abcdefg";
+		// var reg = /[a-z]/g;
+		// //遍历所有结果：
+		// var a;
+		// while((a = reg.exec(str)) != null){
+		// 	console.log(a);
+		// }
+
+
+		//exec哲学，就是match的反面，match能把所有结果在数组中输出
+		//exec是将所有结果通过while()迭代输出
+		//省的你先弄出一个array，然后for遍历，还不如就一个一个遍历
+		var str = "AAABBCCCCCCCCCCCDDDDEEFFF";
+		var reg = /(\w)\1+/g;
+
+		var maxl = 0;
+		var maxc = "";
+
+		var a;
+		while((a = reg.exec(str)) != null){
+			if(a[0].length > maxl){
+				maxl = a[0].length;
+				maxc = a[0];
+			}
+		}
+
+		console.log(maxc);
+	</script>
+</body>
+</html>

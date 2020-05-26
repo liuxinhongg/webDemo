@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box1{
+			width: 300px;
+			height: 400px;
+			border: 1px solid #000;
+			float: left;
+		}
+		.box2{
+			width: 300px;
+			height: 400px;
+			border: 1px solid #000;
+			float: left;
+		}
+		.tools{
+			float: left;
+		}
+		ul{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1" id="box1">
+		<ul>
+			<li><input type="checkbox" /> 牛肉</li>
+			<li><input type="checkbox" /> 猪肉</li>
+			<li><input type="checkbox" /> 土豆</li>
+			<li><input type="checkbox" /> 馒头</li>
+			<li><input type="checkbox" /> 鸡肉</li>
+			<li><input type="checkbox" /> 考拉</li>
+			<li><input type="checkbox" /> 乌龟</li>
+			<li><input type="checkbox" /> 树懒</li>
+		</ul>
+	</div>
+
+	<div class="tools">
+		<p><input id="btn1" type="button" value=">>>>>>>>" /></p>
+		<p><input id="btn2" type="button" value="<<<<<<<<" /></p>
+	</div>
+
+	<div class="box2" id="box2">
+		<ul>
+			 
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		var box1 = document.getElementById("box1");
+		var box2 = document.getElementById("box2");
+		var box1inputs = box1.getElementsByTagName("input");
+		var box2inputs = box2.getElementsByTagName("input");
+		var box1ul = box1.getElementsByTagName("ul")[0];
+		var box2ul = box2.getElementsByTagName("ul")[0];
+ 
+
+		//左边选中的删除，给右边
+		btn1.onclick = function(){
+			var checkedArr = [];	//把已经选中的元素放入数组
+			//两个for循环第一个for循环，筛选出来选中的元素，放入数组
+			for(var i = 0 ; i < box1inputs.length ; i++){
+				if(box1inputs[i].checked){
+					checkedArr.push(box1inputs[i].parentNode);
+				}
+			}
+
+			//把筛选出来的数组中的所有内容在box1中删除，在box2添加
+			for (var i = 0; i < checkedArr.length; i++) {
+				box1ul.removeChild(checkedArr[i]);
+				box2ul.appendChild(checkedArr[i]);
+			}
+		}
+
+
+		btn2.onclick = function(){
+			var checkedArr = [];	//把已经选中的元素放入数组
+			//两个for循环第一个for循环，筛选出来选中的元素，放入数组
+			for(var i = 0 ; i < box2inputs.length ; i++){
+				if(box2inputs[i].checked){
+					checkedArr.push(box2inputs[i].parentNode);
+				}
+			}
+
+			//把筛选出来的数组中的所有内容在box1中删除，在box2添加
+			for (var i = 0; i < checkedArr.length; i++) {
+				box2ul.removeChild(checkedArr[i]);
+				box1ul.appendChild(checkedArr[i]);
+			}
+		}
+	</script>
+</body>
+</html>

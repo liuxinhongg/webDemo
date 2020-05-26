@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//构造函数里面，负责定义一些属性，随着构造函数的执行，这些属性将绑定到new出来的对象身上
+		function People(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		//构造函数里面，负责定义一些属性，随着构造函数的执行，这些属性将绑定到new出来的对象身上
+		People.prototype.sayHello = function(){
+			alert("你好,我是" + this.name + "我今年" + this.age + "岁了");
+		}
+
+		var xiaoming = new People("小明",12);
+		var xiaohong = new People("小红",11);
+
+		// xiaoming.sayHello();
+		// xiaohong.sayHello();
+
+		//访问的是同一个函数
+		alert(xiaoming.sayHello === xiaohong.sayHello);
+	</script>
+</body>
+</html>

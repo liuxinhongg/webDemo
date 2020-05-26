@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 60px;
+				height: 60px;
+				background: hotpink;
+				position: absolute;
+				top: 100px;
+				left: 100px;
+				/*3 表示运动3次就会结束*/
+				/*animation: yundong 5s ease 0s 3;*/
+				/*3 表示运动3次就会结束*/
+				/*animation: yundong 5s ease 0s alternate;*/
+				/*forwards表示当运动结束之后让这个元素保留在原地*/
+                animation: yundong 5s ease 0s forwards;
+				
+				
+			}
+			@-webkit-keyframes yundong{
+				/*关键帧的设置from开始to结束*/
+				from{left:100px}
+				to{left: 700px;}
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

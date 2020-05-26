@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//replace就是替换
+		//换一个，寻找到第一个匹配的，就不再往后匹配了。
+		// var str = "杨幂我爱你，杨幂嫁给我吧，杨幂么么哒";
+		// str = str.replace("杨幂","宋仲基");
+		// console.log(str);
+
+		//=======================
+		//replace第一个参数可以是正则表达式，g就是全局替换。
+		// var str = "杨幂我爱你，杨幂嫁给我吧，杨幂么么哒";
+		// str = str.replace(/杨幂/g,"宋仲基");
+		// console.log(str);
+
+
+
+		//==================================
+		// var str = "杨幂我爱你，杨幂嫁给我吧，杨幂么么哒";
+		// //如果replace函数的第二个参数是一个函数，那么每次匹配到正则的时候
+		// //就会调用一次这个函数，这个函数天生有参数
+		// //return的值就是要替换的值
+		// str = str.replace(/杨幂/g,function(a,b,c){
+		// 	//a 参数就是匹配上的字符串
+		// 	//b 参数就是匹配上的字符串的下标
+		// 	//c 参数就是源字符串
+		// 	return "宋仲基";
+		// });
+		
+		// console.log(str);
+
+
+		//replace的哲学，就能能动态替换
+		// var str = "我好有钱啊我每天挣200元，吃饭花40元，睡觉话50元。";
+
+		// str = str.replace(/\d+元/g,function(a){
+		// 	return "$" + Math.round((parseInt(a) / 6) * 100) / 100;
+		// });
+
+		// console.log(str);
+
+
+
+		//replace分组，直接在替代字符串中就用$1、$2来表示捕获的东西
+		// var str = "Kobe Bryant";
+		// str = str.replace(/(\w+)\s(\w+)/,"$2 $1");
+		// console.log(str);
+
+
+		//================================
+		// var str = "Kobe Bryant";
+		// str = str.replace(/(\w+)\s(\w+)/,function(match,$1,$2,index,str){
+		// 	console.log(match);
+		// 	console.log($1);
+		// 	console.log($2);
+		// 	console.log(index);
+		// 	console.log(str);
+		// });
+
+
+		//===========================
+		//快速学习一下对象
+		// var obj = {
+		// 	a : 1 , 
+		// 	b : 2 , 
+		// 	c : 3
+		// };
+
+		// console.log(obj.b);
+		// console.log(obj[b]);
+
+
+		//================================
+
+		var dictionary = {
+			xingming : "考拉",
+			nianling : "18",
+			xingbie : "女",
+			nvyougeshu : 500
+		}
+
+		var str = "大家好，我叫★xingming★，我今年★nianling★岁了,我是个可爱的★xingbie★生,我的女朋友有★nvyougeshu★个"
+		
+		str = str.replace(/★(\w+)★/g,function(match,$1){
+			return dictionary[$1];
+		});
+
+		console.log(str);
+
+		
+	</script>
+</body>
+</html>

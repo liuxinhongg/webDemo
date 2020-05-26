@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		$.ajax({
+			type:"get",
+			url:"https://douban.uieee.com/v2/movie/in_theaters",
+//			http://apis.juhe.cn/simpleWeather/query?city=西安&key=16425747d0a31b3082a944e1cb235251
+			async:true,
+			success:function(res){
+				console.log(res)
+			}
+		});
+
+ 
+
+	</script>
+</html>

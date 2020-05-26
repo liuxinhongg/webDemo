@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fun(name){
+				
+				name=name||"索拉";//短语法
+				console.log(name)
+			}
+			fun();
+			fun("露西");
+			
+			//默认参数
+			function fun1(name="小魔仙"){
+				console.log(name);
+			}
+			fun1();
+			fun1("魏娇");
+			
+			//剩余参数
+			function fun2(a,...rest){
+				console.log(a);
+				console.log(rest);
+			}
+			fun2(1);//1
+			fun2(1,2,3,4,5);
+			fun2(5,4,3,2,1);
+			
+			var arr=["露西","香克斯","罗宾"];
+			function fun4(a,b,c){
+				console.log(a,b,c);
+			}
+			fun4(arr[0],arr[1],arr[2]);//露西 香克斯 罗宾方法一
+			fun4.apply(null,arr);// 露西 香克斯 罗宾 方法二       如果不改变this指向，第一个参数null
+			fun4.call(obj,arr[0],arr[1],arr[2]);//call传参主要是单个的传参，apply主要是以数组的形式传参
+			//这种方法是扩展参数映射方法
+			fun4(...arr);//露西 香克斯 罗宾 方法三  
+		</script>
+	</body>
+</html>

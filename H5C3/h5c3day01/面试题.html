@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" list="tishi">
+
+			<datalist id="tishi">
+				<!--<option value="石景山">石景山</option>
+				<option value="秦岭">秦岭</option>
+				<option value="东莞">东莞</option>
+				<option value="东京">东京</option>-->
+			</datalist>
+			<script type="text/javascript">
+			var datalist=document.querySelector("datalist");
+				var xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4){
+						var obj=JSON.parse(xhr.responseText);
+						console.log(obj);
+						var htmlData='';
+						for(var i=0;i<obj.length;i++){
+							htmlData+='<option value="'+obj[i]+'">'+obj[i]+'</option>';
+						}
+						datalist.innerHTML=htmlData;
+					}
+				}
+				xhr.open("get","js.json",true);
+				xhr.send(null);
+				
+			</script>
+	</body>
+</html>

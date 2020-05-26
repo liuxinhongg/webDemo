@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// (function fun(a){
+		// 	alert(a)
+		// })("哈哈");
+
+		// fun("嘻嘻");	//不能被调用了，因为刚才那个就是表达式了
+
+
+		//标准的IIFE：
+		// (function(){
+		// 	alert("哈哈");
+		// })();
+
+		//设计一个函数，这个函数接收三个参数，比如sum(4,7,9)  //返回的是前两个数字大的那个数字，与第三个数字的和。
+		//方法1：立立正正，不用奇淫技巧
+		// function sum(a,b,c){
+		// 	var max = a >= b ? a : b;
+		// 	return max + c;
+		// }
+
+		//方法2：奇淫技巧
+		function sum(a,b,c){
+			return (function(a,b){
+				return a >= b ? a : b;
+			})(a,b) + c;
+		}
+		console.log(sum(1,2,3));
+	</script>
+</body>
+</html>

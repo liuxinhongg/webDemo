@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: yellowgreen;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+
+	<script type="text/javascript">
+		var oDiv = document.getElementsByTagName("div")[0];
+
+		oDiv.onclick  = function(event){
+			//事件的类型,"click"
+			console.log(event.type);
+			//事件的触发元素
+			console.log(event.target);
+		}
+	</script>
+</body>
+</html>

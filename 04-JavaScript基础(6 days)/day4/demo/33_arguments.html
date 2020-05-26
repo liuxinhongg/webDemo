@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//===================
+		//JS中没有函数的重载，也就是说函数的名字一样，即使形式参数列表不一样
+		//也视为同一个函数，后写的会覆盖先写的
+
+		/*
+		function fun(a,b,c){
+			alert("嘻嘻");
+		}
+
+		function fun(a,b){
+			alert("哈哈");
+		}
+
+		fun(1,2,4);  //弹出哈哈
+		*/
+
+
+		//=================================
+		//arguments参数，是每个函数天生就有，调用的时候会填充里面的数值
+		// function fun(a,b){
+		// 	  alert(arguments[3]);		//34
+		// }
+
+		// fun(45,436,457,34,23,12);
+
+
+		//==============================
+		//模拟函数重载
+		//现在有一个sum函数，如果只传一个参数，返回加1
+		//如果有两个参数，返回两个数字的和
+		// function sum(a,b){
+		// 	//如果实际参数的长度是1，说白了，你只传进来一个参数
+		// 	switch(arguments.length){
+		// 		case 1:
+		// 			return ++a;
+		// 			break;
+		// 		case 2:
+		// 			return a + b;
+		// 			break;
+		// 	}
+		// }
+
+		// alert(sum(10));
+		// alert(sum(10,20));
+
+
+		//========================
+		//设计一个无限参数的函数
+		// function sum(){
+		// 	var sum = 0 ;	//累加器
+		// 	//遍历所有传进来的实际参数，算总和
+		// 	for (var i = 0; i < arguments.length; i++) {
+		// 		sum += arguments[i];
+		// 	}
+		// 	return sum;
+		// }
+
+		// alert(sum(1,6,8,7,3,2,4));
+
+		//===============================
+		//设计一个函数，check如果只有一个参数，那么就是检查这个数字是否是偶数
+		//如果有两个个参数，就要检查这个两个参数奇偶性是否相同
+		//check(8)  	//true
+		//check(7,11)  //true
+		function check(){
+			switch(arguments.length){
+				case 1:
+					return arguments[0] % 2 == 0 ? true : false;
+					break;
+				case 2:
+					return (arguments[0] + arguments[1]) % 2 == 0 ? true : false;
+					break;
+				default:
+					throw new Error("你输入错误，请检查。我们只支持1个参数、2个参数");	//抛出错误
+			}
+		}
+	</script>
+</body>
+</html>

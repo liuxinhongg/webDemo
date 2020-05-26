@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p{
+			width: 60px;
+			height: 60px;
+			float: left;
+			margin-right: 20px;
+			background-color: yellowgreen;
+		}
+	</style>
+</head>
+<body>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+
+	<script type="text/javascript">
+		var ps = document.getElementsByTagName("p");
+
+		// 第一种，IIFE
+		// for(var i = 0 ; i < ps.length ; i++){	
+		// 	(function(m){
+		// 		ps[m].onclick = function(){
+		// 			alert("我是老" + m + "点我干嘛？！！");
+		// 		}
+		// 	})(i);
+		// }
+
+
+		//介绍第二种方法，也是非常巧妙的，比第一种简单
+		for(var i = 0 ; i < ps.length ; i++){
+			ps[i].index = i;	//先编号，大家约定俗成叫index，实际上叫什么都行
+			
+			//然后设置监听
+			ps[i].onclick = function(){
+				alert("我是老" + this.index + "点我干嘛？！！")
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <!-- prop:主要作用是在传入数据的时候对传入的值做判断 -->
+    <div id="app">
+        <blog-post post-title="hello" likes="23" author="{a:'aaaa'}"></blog-post>
+    </div>
+</body>
+<script>
+    Vue.component('BlogPost', {
+        props: ['postTitle', "likes", "author"],
+        template: `
+        <div> 
+            <h1>{{postTitle}}</h1> 
+            <h2>{{likes}}</h2>
+            <p>{{author}}</p>
+        </div>
+        `
+    })
+    new Vue({
+        el: "#app",
+    })
+</script>
+
+</html>

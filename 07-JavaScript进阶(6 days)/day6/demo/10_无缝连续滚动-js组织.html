@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			border:0;
+		}
+		.rolling{
+			width: 800px;
+			height: 130px;
+			border: 10px solid #ccc;
+			margin: 100px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.rolling .m_unit{
+			/*这是运动的单位*/
+			/*这个宽度足以致命，为了让所有的li能够并排*/
+			/*这个宽度随便取，大一点*/
+			width: 5000px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.rolling ul{
+			list-style: none;
+		}
+		.rolling ul li{
+			float: left;
+			margin-right: 10px;
+			background: url(images/shuzi/loading.gif);
+		}
+	</style>
+</head>
+<body>
+	<div class="rolling" id="rolling1">
+		<div class="m_unit" id="m_unit1">
+			<ul>
+				<li><a href=""><img src="images/shuzi/0.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/1.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/2.png" /></a></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/rolling1.js"></script>
+ 	
+
+	<div class="rolling" id="rolling2">
+		<div class="m_unit" id="m_unit2">
+			<ul>
+				<li><a href=""><img src="images/shuzi/0.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/1.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/2.png" /></a></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/rolling2.js"></script>
+</body>
+</html>

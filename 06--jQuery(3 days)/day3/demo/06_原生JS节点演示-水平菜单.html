@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.nav{
+			width: 960px;
+			height: 40px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		.nav ul{
+			list-style: none;
+		}
+		.nav ul li{
+			float: left;
+			width: 120px;
+			height: 40px;
+		}
+		.nav ul li a{
+			display: block;
+			width: 120px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			background-color: orange;
+		}
+		.nav ul li a:hover{
+			background-color: yellow;
+		}
+		.nav ul li .dropbox{
+			width: 160px;
+			display: none;
+			overflow: hidden;
+		}
+		.nav ul li .dropbox a{
+			width: 160px;
+			line-height: 30px;
+			height: 30px;
+			background-color: #ccc;
+		}
+		.nav ul li .dropbox a:hover{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav" id="nav">
+		<ul>
+			<li>
+				<a href="">网站栏目</a>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+				<div class="dropbox">
+					<p><a href="">子栏目1</a></p>
+					<p><a href="">子栏目2</a></p>
+					<p><a href="">子栏目3</a></p>
+					<p><a href="">子栏目4</a></p>
+					<p><a href="">子栏目5</a></p>
+					<p><a href="">子栏目6</a></p>
+					<p><a href="">子栏目7</a></p>
+				</div>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+				<div class="dropbox">
+					<p><a href="">啊啊啊啊啊啊</a></p>
+					<p><a href="">啊啊啊啊啊啊</a></p>
+					<p><a href="">啊啊啊啊啊啊</a></p>
+					<p><a href="">啊啊啊啊啊啊</a></p>
+				</div>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+				<div class="dropbox">
+					<p><a href="">啊啊啊啊啊啊</a></p>
+					<p><a href="">啊啊啊啊啊啊</a></p>
+					<p><a href="">啊啊啊啊啊啊</a></p>
+					<p><a href="">啊啊啊啊啊啊</a></p>
+				</div>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+			</li>
+			<li>
+				<a href="">网站栏目</a>
+			</li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript" src="js/animate-2.0.2.js"></script>
+	<script type="text/javascript">
+		//得到所有的li
+		var lis = document.getElementById("nav").getElementsByTagName("li");
+
+		//li的监听
+		for (var i = 0; i < lis.length; i++) {
+			//鼠标进入，业务就是让自己的儿子dropbox显示
+			lis[i].onmouseenter = function(){
+				//备份一下this超纲了
+		 		var self = this;
+				//得到自己的儿子dropbox
+				var mydropbox = (function(){
+					for(var i = 0 ; i < self.childNodes.length ; i++){
+						if(self.childNodes[i].className == "dropbox"){
+							return self.childNodes[i];
+						}
+					}
+				})();
+
+				//得到菜单项的个数
+				var ps = mydropbox.getElementsByTagName("p");
+				//瞬间让自己的儿子display:block。高度变为1px
+				//然后动画
+				if(mydropbox){
+					mydropbox.style.display = "block";
+					mydropbox.style.height = "1px";
+					animate(mydropbox,{"height":ps.length * 30},300);
+				}
+					
+			}
+
+
+			lis[i].onmouseleave = function(){
+				//备份一下this超纲了
+		 		var self = this;
+				//得到自己的儿子dropbox
+				var mydropbox = (function(){
+					for(var i = 0 ; i < self.childNodes.length ; i++){
+						if(self.childNodes[i].className == "dropbox"){
+							return self.childNodes[i];
+						}
+					}
+				})();
+
+				if(mydropbox){
+					animate(mydropbox,{"height":0},300,function(){
+						mydropbox.style.display = "none";
+					});
+				}
+			}
+		};
+	</script>
+</body>
+</html>

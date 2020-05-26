@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <!-- prop:主要作用是在传入数据的时候对传入的值做判断 -->
+    <div id="app">
+        <blog-post :title="post.title" :likes="post.num" :callback="55" :is-published='post.seen' :author="{a:'aaa'}"></blog-post>
+    </div>
+</body>
+<script>
+    Vue.component('blog-post', {
+        props: {
+            title: String,
+            likes: Number,
+            isPublished: Boolean,
+            commentIds: Array,
+            author: Object,
+            callback: {
+                validator: function(val) {
+                    return val
+                }
+            },
+            contactsPromise: Promise // or any other constructor
+        },
+        template: `
+        <div> 
+            <h1>{{title}}</h1> 
+            <h2>{{likes}}</h2>
+            <h2>{{author}}</h2>
+            <h2>{{callback}}</h2>
+            <p>{{isPublished}}</p>
+        </div>
+        `
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            msg: 'sdfdsfsd',
+            post: {
+                title: "hello world",
+                num: 100,
+                seen: true,
+            }
+        },
+    })
+</script>
+
+</html>

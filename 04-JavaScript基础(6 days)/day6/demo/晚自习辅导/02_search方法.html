@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//返回的是符合正则表达式的第一个位置
+		var str = "ABCDEFG122234555567abcdefg";
+		var reg = /(\w)\1+/g;			//重复的字母、数字
+
+		var number = str.search(reg);
+		console.log(number);
+
+		
+		//哲学： search就是能用正则式的indexOf。
+		// var str = "ABCDEFG122234555567abcdefg";
+		// console.log(str.indexOf("FG"));
+	</script>
+</body>
+</html>

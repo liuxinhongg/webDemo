@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.item{
+				width: 1000px;
+				height: 500px;
+				margin: 50px auto;
+				background-color: yellowgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="item">001</div>
+		<div class="item">002</div>
+		<div class="item">003</div>
+		<div class="item">004</div>
+		<div class="item">005</div>
+		<div class="item">006</div>
+		<div class="item">007</div>
+		<div class="item">008</div>
+		<div class="item">009</div>
+		<div class="item">010</div>
+	</body>
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(window).scroll(function(){
+//			console.log($(this).scrollTop())
+			console.log($(this).height())
+		})
+		
+		var urlPath = window.location.search;
+		
+		console.log(urlPath);
+	</script>
+</html>

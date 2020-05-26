@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="images/1.jpg" id="tutu" />
+
+	<p>哈哈哈哈哈哈</p>
+	<p>哈哈哈哈哈哈</p>
+	<p>哈哈哈哈哈哈</p>
+	<p>哈哈哈哈哈哈</p>
+	<p>哈哈哈哈哈哈</p>
+	<p>哈哈哈哈哈哈</p>
+
+	<script type="text/javascript">
+		var tutu = document.getElementById("tutu");
+		tutu.src = "images/2.jpg";
+
+		//所有的p标签
+		var ps = document.getElementsByTagName("p");
+		ps[2].innerHTML = "嘻嘻嘻嘻";
+	</script>
+</body>
+</html>

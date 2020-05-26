@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    
+    <style>
+        .col-lg-3 {
+            border: 1px solid red;
+            text-align: center;
+        }
+        .box{
+            border: 1px solid yellow;
+            text-align: center;
+        }
+        .col-md-3{
+            border: 3px solid green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                哈啊哈
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                哈啊哈
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                哈啊哈
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                哈啊哈
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container" style="margin-top:30px; ">
+
+        <div class="row">
+            <div  style="border: 2px solid red;" class="col-md-offset-3  text-center col-md-4 ">
+                哈哈哈
+            </div>
+            <div style="border: 2px solid red;" class="text-center  col-md-3 ">
+                哈哈哈
+            </div>
+            <div style="border: 2px solid red;" class="text-center  col-md-4 ">
+                哈哈哈
+            </div>
+
+        </div>
+
+    </div>
+<!-- 嵌套 -->
+    <div class="container" style="margin-top:40px ">
+            <div class="row">
+                <div class="box col-md-3 col-xs-6">
+                    <div class="row">
+                        <div class="col-md-3">没想刀疤</div>
+                        <div class="col-md-3">没想刀疤</div>
+                        <div class="col-md-3">没想刀疤</div>
+                        <div class="col-md-3">没想刀疤</div>
+                    </div>
+                </div>
+                <div class="box col-md-3 col-xs-6">你好啊</div>
+                <div class="box col-md-3 col-xs-6">你好啊</div>
+                <div class="box col-md-3 col-xs-6">你好啊</div>
+            </div>
+    </div>
+<!-- 类似定位 -->
+    <div class="container" style="margin-top: 40px">
+        <div class="row">
+                <div class="col-md-3 col-md-push-3">我是第一</div>
+                <div class="col-md-3 col-md-pull-3" >我是第二</div>
+                <div class="col-md-3">我是第333</div>
+                <div class="col-md-3">我是第4444</div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

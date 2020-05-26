@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.choose{
+			background-color: yellowgreen;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<ul>
+			<li>
+				<input type="checkbox" />
+				吃饭
+			</li>
+			<li>
+				<input type="checkbox" />
+				睡觉
+			</li>
+			<li>
+				<input type="checkbox" />
+				打豆豆
+			</li>
+		</ul>
+	</div>
+
+
+	<script type="text/javascript">
+		//得到所有的input
+		var inputs = document.getElementById("box").getElementsByTagName("input");
+
+		//li的监听
+		for (var i = 0; i < inputs.length; i++) {
+			inputs[i].onclick = function(){
+				//alert(this.checked);
+				//如果某个复选框被勾选，那么它的爸爸就是choose类	
+				this.parentNode.className = this.checked ? "choose" : ""; 
+			}
+		}
+	</script>
+</body>
+</html>

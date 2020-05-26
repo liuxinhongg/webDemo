@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#idv1{
+				width: 350px;
+				height: 80px;
+				border: 1px solid #800080;
+				padding: 10px;
+			}
+			#drag1{
+				/*width: 300px;*/
+				height: 70px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>拖动RUNOOM.CON，图片到矩形框中</p>
+		<div id="idv1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<img src="img/cat.jpg" draggable="true" ondragstart="drag(event)" id="drag1" />
+			
+			
+			<script type="text/javascript">
+				function allowDrop(even){
+					even.preventDefault();
+				}
+				function drag(even){
+					even.dataTransfer.setData("Text", event.target.id);
+				}
+				function drop(even){
+					even.preventDefault();
+					var data=even.dataTransfer.getData("Text");
+					even.target.appendChild(document.getElementById(data));
+				}
+			</script>
+	</body>
+</html>

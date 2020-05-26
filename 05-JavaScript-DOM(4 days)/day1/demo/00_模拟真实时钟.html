@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    #clock {
+      width: 200px;
+      height: 200px;
+      background-color: antiquewhite;
+      border-radius: 100px;
+    }
+
+    #clock .pointer {
+      position: absolute;
+      transform-origin: 0 100%;
+    }
+
+    #hour-pointer {
+      width: 10px;
+      height: 50px;
+      background-color: black;
+      top: 50px;
+      left: 100px;
+    }
+
+    #min-pointer {
+      width: 4px;
+      height: 60px;
+      background-color: aqua;
+      top: 40px;
+      left: 103px;
+    }
+
+    #sec-pointer {
+      width: 1px;
+      height: 80px;
+      background-color: red;
+      top: 20px;
+      left: 104px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="clock">
+  <div id="hour-pointer" class="pointer"></div>
+  <div id="min-pointer" class="pointer"></div>
+  <div id="sec-pointer" class="pointer"></div>
+</div>
+
+<script>
+  /**
+   * Created by plter on 6/17/16.
+   */
+
+  (function () {
+
+    var hourPointer, minPointer, secPointer;
+
+    function getPointers() {
+      hourPointer = document.getElementById("hour-pointer");
+      minPointer = document.getElementById("min-pointer");
+      secPointer = document.getElementById("sec-pointer");
+    }
+
+    function showTime() {
+      var d = new Date();
+
+      var secValue = d.getSeconds() * 6;
+      var minValue = d.getMinutes() * 6;
+      var hourValue = (d.getHours() % 12) * 30 + minValue / 360 * 30;
+
+      secPointer.style.transform = "rotate(" + secValue + "deg)";
+      minPointer.style.transform = "rotate(" + minValue + "deg)";
+      hourPointer.style.transform = "rotate(" + hourValue + "deg)";
+    }
+
+    function init() {
+      getPointers();
+
+      showTime();
+
+      setInterval(showTime, 1000);
+    }
+
+    init();
+  })();
+</script>
+</body>
+</html>

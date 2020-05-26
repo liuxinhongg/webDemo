@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 60px;
+				height: 60px;
+				background: orangered;
+				position: absolute;
+				top: 200px;
+				left: 200px;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<script>
+		var oDiv=document.querySelector("div");
+		
+		//圆心的位置坐标
+		var yuanxin={a:200,b:200};
+		//半径
+		var r=150;
+		//信号量
+		degree=0;
+		setInterval(function(){
+			degree++;
+			go(degree);
+		},40);
+		//运动函数  设置一个角度的时候，盒子应该在的位置
+		function go(degree){
+		oDiv.style.left=yuanxin.a+r*Math.sin(degreeToRad(degree))+"px";
+		oDiv.style.top=yuanxin.b-r*Math.cos(degreeToRad(degree))+"px";
+		}
+		//实用函数，吧角度转换成弧度制，为什么要有这个函数，因为这个函数可以吧
+			function degreeToRad(degree){
+				return degree*Math.PI/180;
+				
+			}
+			
+		console.log(degreeToRad(60));
+		</script>
+	</body>
+</html>

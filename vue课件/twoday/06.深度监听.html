@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{a}}</p>
+        <p>{{b}}</p>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            a: 1111,
+            b: 2222,
+            obj: {
+                name: "张三",
+                age: 20
+            }
+        },
+    })
+
+    // 监听对象不出现弹框，必须要深度监听
+    vm.$watch('obj', function() {
+        alert(this.obj.name + "发生了变化");
+
+    }, {
+        deep: true
+    })
+    document.onclick = function() {
+        vm.obj.name = 'zhangsan';
+    }
+</script>
+
+</html>

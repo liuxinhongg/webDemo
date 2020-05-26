@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<embed src="img/赵雷 - 成都.mp3"></embed>-->
+		<!--<video src="img/赵雷 - 成都.mp3" autoplay controls></video>-->
+		<!--<object data="img/赵雷 - 成都.mp3"></object>-->
+		<audio controls class="audioPlay">
+			<source src="img/赵雷 - 成都.mp3"/>
+		</audio>
+		<input type="button" name="play" id="play" value="播放" />
+		<input type="button" name="muted" id="muted" value="静音" />
+		<input type="number" name="" id="volume" value="" min="1" max="100"/>
+		<script type="text/javascript">
+			var audioPlay=document.querySelector(".audioPlay");
+			var Play=document.querySelector("#play");
+			var muted=document.querySelector("#muted");
+			var volume=document.querySelector("#volume");
+			//播放和暂停切换
+			Play.onclick=function(){
+                  if(Play.value=="播放"){
+				    this.value="暂停";
+					audioPlay.play();
+				}else{
+					this.value="播放";
+					audioPlay.pause();
+				}
+			}
+			//静音切换
+			muted.onclick=function(){
+				audioPlay.muted=!audioPlay.muted;
+			}
+			//控制变量大小
+			volume.onclick=function(){
+				audioPlay.volume=parseInt(this.value)/100;
+			}
+		</script>
+	</body>
+</html>

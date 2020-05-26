@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			background-color: yellowgreen;
+			padding: 10px 20px 30px;
+			border:10px solid red;
+			background: yellowgreen url(images/songhuiqiao.jpg) no-repeat 10px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否是否
+	</div>
+
+	<script type="text/javascript">
+		var oDiv = document.getElementsByTagName("div")[0];
+
+		// alert(window.getComputedStyle(oDiv).getPropertyValue("width"));
+
+		//不用写window.
+		//alert(getComputedStyle(oDiv).getPropertyValue("width"));
+
+		//注意引号里面的东西不是驼峰：
+		// alert(getComputedStyle(oDiv).getPropertyValue("padding-left"));
+
+		//可以不写getPropertyValue，写方括号：
+		//alert(getComputedStyle(oDiv)["padding-left"]);
+
+
+		//所谓的计算后的样式，就是不一定显式的在css里面罗列了
+		//alert(getComputedStyle(oDiv)["background-position"]);
+
+		//alert(getComputedStyle(oDiv)["height"]);
+
+		//上面写的IE6、7、8一律视为错误！！
+
+		//================================================
+		// alert(oDiv.currentStyle.width);			//20px
+		// alert(oDiv.currentStyle.width);			//20px
+		// alert(oDiv.currentStyle.height);		//auto
+		// alert(oDiv.currentStyle.paddingTop);	//10px
+		alert(oDiv.currentStyle["paddingLeft"]);	
+	</sjcript>
+</body>
+</html>

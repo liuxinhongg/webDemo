@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<title>步行路线规划</title>
+
+	<style type="text/css">
+		body,
+		html,
+		#container {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+			font-family: "微软雅黑";
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container"></div>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=jbbNxF1p6imNqUXpmdd9GzmuEaHeu9Yq"></script>
+	
+	<script type="text/javascript">
+		var map = new BMap.Map("container");
+		map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+		var walking = new BMap.WalkingRoute(map, {
+			renderOptions: {
+				map: map,
+				autoViewport: true
+			}
+		});
+		var start = new BMap.Point(116.310791, 40.003419);
+		var end = new BMap.Point(116.326419, 40.003519);
+		walking.search(start, end);
+	</script>
+</body>
+
+</html>

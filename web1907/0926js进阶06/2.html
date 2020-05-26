@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var f = document.querySelector("form");
+				var user = document.querySelector("#user");
+
+				f.onsubmit = function() {
+					var p = /^[0-9]+$/;
+					var t = p.test(user.value);
+
+					if (t) {
+						alert("提交失败")
+						return false;
+					} else {
+						alert("提交成功")
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="index.html" method="get">
+			<input type="text" name="user" id="user" value="" />
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+
+</html>

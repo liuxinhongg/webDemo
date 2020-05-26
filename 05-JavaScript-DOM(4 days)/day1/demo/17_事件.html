@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: yellowgreen;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		// 得到这个box
+		var oDiv = document.getElementById("box");
+
+		//事件
+		oDiv.onclick = function(){
+			alert("你好，点我干嘛，我烦着呢！！");
+		}
+		//事件
+		oDiv.onmouseover = function(){
+			//我自己的样式改变，写this这个词
+			this.style.backgroundColor = "blue";
+		}
+		//事件
+		oDiv.onmouseout = function(){
+			//我自己的样式改变，写this这个词
+			this.style.backgroundColor = "yellowgreen";
+		}
+
+	</script>
+</body>
+</html>

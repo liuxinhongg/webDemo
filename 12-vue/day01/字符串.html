@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            {{message}}
+        </p>
+
+        <p>
+            {{message.split("").reverse().join('')}}
+        </p>
+
+        <p>
+                <input type="button" value="+" v-on:click="num++">
+                <input type="button" v-bind:value="num">
+                <input type="button" value="-" v-on:click="num--" v-bind:disabled="num==0">
+        </p>
+        
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "你好啊，吃饭了",
+            num:1
+
+        },
+        methods: {
+
+        }
+    });
+</script>
+
+</html>

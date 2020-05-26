@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="allmap" style="width: 500px;height: 500px;border: 1px solid red;">
+
+		</div>
+	</body>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=11KwM4SL3gsDG3y1NFOc7QjEncqwmTlK"></script>
+
+	<script type="text/javascript">
+		function init() {
+			var geolocation = new BMap.Geolocation();
+			var map = new BMap.Map("allmap");
+			var geoc = new BMap.Geocoder();
+			
+			var local = new BMap.LocalSearch(map, {
+				renderOptions: {
+					map: map
+				}
+			});
+
+			geolocation.getCurrentPosition(function(r) {
+				if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+					console.log(r.point);
+
+					var point = new BMap.Point(r.point.lng, r.point.lat);
+					map.centerAndZoom(point, 12);
+					map.enableScrollWheelZoom(true);
+					var pot = r.point;
+					geoc.getLocation(pot, function(rs) {
+						//addressComponents对象可以获取到详细的地址信息
+						var addComp = rs.addressComponents;
+						var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+						console.log(site); //详细地址
+						console.log(pot.lng); //精度
+						console.log(pot.lat); //纬度
+						
+						local.search(site);						
+					});
+
+					
+
+				} else {
+					alert('failed' + this.getStatus());
+				}
+			});
+
+		}
+		init()
+	</script>
+
+</html>

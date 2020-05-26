@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="images/1.jpg" id="tutu" />
+
+	<div shaoshanhuan="38" id="box"></div>
+
+	<script type="text/javascript">
+		var oImg = document.getElementById("tutu");
+
+		oImg.setAttribute("src","images/2.jpg");
+
+		//完全等价于：
+		//oImg.src = "images/2.jpg"
+
+		var oBox = document.getElementById("box");
+		//自定义的属性，不是w3c的属性，都不能用点语法
+		alert(oBox.shaoshanhuan);	 //undefined
+		alert(oBox.getAttribute("shaoshanhuan"));	
+	</script>
+</body>
+</html>

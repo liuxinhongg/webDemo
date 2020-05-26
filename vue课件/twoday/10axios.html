@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- http://route.showapi.com/1618-2?showapi_appid=替换自己的值&page=1&showapi_sign=替换自己的值 -->
+    <div id="app">
+        <input type="button" value="点击" @click="getbtn">
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            name: '',
+            aa: ''
+        },
+        methods: {
+            getbtn() {
+                console.log(11);
+                axios({
+                    method: 'get',
+                    data: {
+                        showapi_appid: '46452',
+                        page: 1,
+                        showapi_sign: 'c3bc2247155b4219bffb60cac4fd315c'
+                    },
+                    url: 'http://route.showapi.com/1618-2',
+                }).then(function(res) {
+                    console.log(res);
+                })
+
+                // axios.get('http://route.showapi.com/1618-2?showapi_appid=46452&page=1&showapi_sign=c3bc2247155b4219bffb60cac4fd315c').then(res => {
+                //     console.log(res)
+                // })
+                // axios.get('http://route.showapi.com/1618-2?showapi_appid=46452&page=1&showapi_sign=c3bc2247155b4219bffb60cac4fd315c').then(res => {
+                //     console.log(res);
+                // })
+                /*
+                axios.get('http://route.showapi.com/1618-2', {
+                        params: {
+                            showapi_appid: '46452',
+                            page: 1,
+                            showapi_sign: 'c3bc2247155b4219bffb60cac4fd315c',
+                        }
+                    }).then(res => {
+                        console.log(res);
+                    })
+                    
+                axios.post('http://route.showapi.com/1626-1', {
+                        showapi_appid: '46452',
+                        isbn: '9787208061644',
+                        showapi_sign: 'c3bc2247155b4219bffb60cac4fd315c',
+                    }).then(res => {
+                        console.log(res);
+                    })*/
+                // axios.方法("路径").then(function(){});
+                // axios.方法("路径").then(res=>{});                    
+            }
+        },
+    })
+</script>
+
+</html>

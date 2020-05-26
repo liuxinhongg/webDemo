@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 80px;
+			height: 80px;
+			background-color: gold;
+			position: absolute;
+			top: 111px;
+			left: 111px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		//得到盒子
+		var oDiv = document.getElementById("box");
+		//信号量
+		var nowleft = 111;
+		var nowtop = 111;
+		var nowwidth = 80;
+
+		//定时器
+		setInterval(function(){
+			//这个函数，就是每20毫秒调用一次。
+			nowleft += 10;
+			nowtop += 2;
+			nowwidth += 10;
+			oDiv.style.left = nowleft + "px";
+			oDiv.style.top = nowtop + "px";
+			oDiv.style.width = nowwidth + "px";
+		},20);
+	</script>
+</body>
+</html>

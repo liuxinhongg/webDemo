@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		localStorage.setItem("cat",'{name:"加菲",age:3,color:"黑色"}')
+		
+		var student1 = localStorage.getItem("student1");
+		
+		student1 = JSON.parse(student1);
+		
+		console.log(student1.name)
+		
+		localStorage.removeItem("age");
+		
+	</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.oDiv{
+				width: 300px;
+				height: 200px;
+				background: #006699;
+			}
+			p{
+				color:orange;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			
+			var $ ={
+				ajax: function(options){
+					
+					var url = options.url; //先得到地址
+					if( url === undefined){
+						throw new Error("ajax一定要传URL");
+						return; //程序终止
+					}
+					var type = options.type || "GET";
+					
+					var xhr = null;
+					
+					if( window.XMLHttpRequest ){
+						xhr = new XMLHttpRequest();
+					}else{ //IE需要使用一下的方式创建
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					
+					//当准备状态值改变的时候触发事件
+					xhr.onreadystatechange=function(){
+						//4表示请求已完成
+						if( xhr.readyState == 4){
+							
+							//判断一下HTTP请求的状态码，如果成功或者缓存
+							if( xhr.status >= 200 && xhr.status < 300 
+								|| xhr.status == 304){
+									
+								//如果传进来的参数里面success是一个函数	
+									if( (typeof options.success) === "function" ){
+										//回调函数 把获取的数据以参数的形式传递
+										options.success( xhr.responseText );
+									}
+								}
+						}
+						
+					}
+					
+					
+					xhr.open(type,url);
+					
+					xhr.send();
+					
+				}
+			}
+			
+			$.ajax({ 
+				"url" :"http://h6.duchengjiu.top/shop/api_cat.php",
+				"type": "GET",
+				"success":function(response){
+					console.log(response);
+				}
+			})
+			$.ajax({ 
+				"url" :"http://h6.duchengjiu.top/shop/api_goods.php",
+				"type": "GET",
+				"success":function(response){
+					console.log(response);
+				}
+			})
+		</script>
+	</body>
+</html>

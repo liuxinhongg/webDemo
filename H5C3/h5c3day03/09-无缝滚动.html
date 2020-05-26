@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.rolling{
+				width: 800px;
+				height: 130px;
+				border: 10px solid black;
+				margin: 100px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.rolling .m_unit{
+				/*运动的单位 着宽度不够足矣致命,为了让所有的li能够并排显示  最小2100   最大不限*/
+				width: 2100px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				animation: move 3s linear 0s infinite;
+			}
+			.m_unit ul{
+				list-style: none;
+			}
+			.m_unit ul li{
+				float: left;
+				margin-right: 10px;
+			}
+			@keyframes move{
+				from{left: 0px;}
+				to{left: -1050px;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="rolling" id="rolling">
+			<div class="m_unit" id="m_unit">
+				<ul>
+					<li><a href="#"> <img src="img/1.png"/></a></li>
+					<li><a href="#"> <img src="img/2.png"/></a></li>
+					<li><a href="#"> <img src="img/3.png"/></a></li>
+					<li><a href="#"> <img src="img/4.png"/></a></li>
+					<li><a href="#"> <img src="img/5.png"/></a></li>
+					<li><a href="#"> <img src="img/1.png"/></a></li>
+					<li><a href="#"> <img src="img/2.png"/></a></li>
+					<li><a href="#"> <img src="img/3.png"/></a></li>
+					<li><a href="#"> <img src="img/4.png"/></a></li>
+					<li><a href="#"> <img src="img/5.png"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

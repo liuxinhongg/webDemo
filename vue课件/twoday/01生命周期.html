@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <input type="button" value="更新" onclick="change()">
+        <input type="button" value="销毁" onclick="destroy()">
+        <input type="button" value="点我" id="btn">
+    </div>
+</body>
+<script>
+    // $("#btn").click(function() {
+    //     alert("会不会弹出？");
+    // })
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "实例消息"
+        },
+        beforeCreate() {
+            alert("实例创建前");
+        },
+        created() {
+            alert("实例创建完成");
+            // 创建完成，但是没有挂载
+            // $("#btn").click(function() {
+            //     alert("会不会弹出？");
+            // })
+        },
+        beforeMount() {
+            alert("实例挂在前");
+        },
+        mounted() {
+            alert("实例挂载完成");
+            $("#btn").click(function() {
+                alert("会不会弹出？");
+            })
+        },
+        beforeUpdate() {
+            alert("更新前");
+        },
+        updated() {
+            alert("更新完成");
+        },
+        beforeDestroy() {
+            alert("销毁前");
+        },
+        destroyed() {
+            alert("销毁完成")
+        },
+    })
+
+    function change() {
+        vm.msg = "对方水电费";
+    }
+
+    function destroy() {
+        vm.$destroy();
+    }
+</script>
+
+</html>

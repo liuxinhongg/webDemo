@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+// 判断字符串是否是以abc开头
+var reg = /^abc/;
+console.log(reg.test('abcdef'))
+console.log(reg.test('hello'))
+
+// 判断字符串是否是以xyz结尾的
+var reg = /xyz$/;
+console.log(reg.test('uvwxyz'));
+console.log(reg.test('helloyz'));
+
+// 'how old are you'切割成单词
+var str = 'how old are   you|abc';
+// 大小写字母表示：[a-zA-Z]+
+console.log(str.match(/\b[a-zA-Z]+\b/g));
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			border:0;
+		}
+		.rolling{
+			width: 800px;
+			height: 130px;
+			border: 10px solid #ccc;
+			margin: 100px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.rolling .m_unit{
+			/*这是运动的单位*/
+			/*这个宽度足以致命，为了让所有的li能够并排*/
+			/*这个宽度随便取，大一点*/
+			width: 5000px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.rolling ul{
+			list-style: none;
+		}
+		.rolling ul li{
+			float: left;
+			margin-right: 10px;
+			background: url(images/shuzi/loading.gif);
+		}
+	</style>
+</head>
+<body>
+	<div class="rolling" id="rolling">
+		<div class="m_unit" id="m_unit">
+			<ul>
+				<li><a href=""><img src="images/shuzi/0.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/1.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/pangzi.png" /></a></li>
+				<li><a href=""><img src="images/shuzi/2.png" /></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		//得到元素
+		var rolling = document.getElementById("rolling");	//大盒子
+		var m_unit = document.getElementById("m_unit");		//运动单位
+		var listul = m_unit.getElementsByTagName("ul")[0];	//ul
+		var imgs = listul.getElementsByTagName("img");		//img
+
+		//图片的原来数量
+		var zhefandian;	//折返点
+
+		//复制一倍的li
+		listul.innerHTML += listul.innerHTML;
+		//得到所有li，包括新li
+		var lis = listul.getElementsByTagName("li");	
+		//所有li的个数，包括新li	
+		var lislength = lis.length;		
+
+		//现在我们要计算折返点，但是每个li的宽度都不一样，所以现在假火车的开头元素的offsetLeft就是折返点。这个元素是lis[lislength / 2];比较麻烦的是，由于Chrome的机理，如果要读取offsetLeft值必须保证所有图片加载完毕。
+		for(var i = 0 , count = 0 ; i < imgs.length ; i++){
+			imgs[i].onload = function(){
+				count++;
+				if(count == imgs.length){
+					//所有图片加载完毕了，就有折返点了：
+					zhefandian = lis[lislength / 2].offsetLeft;
+					//所有图片加载完毕了，再开始运动
+					move();
+				}
+			}
+		}
+
+		//信号量
+		var nowleft = 0;
+		var timer;
+
+		//鼠标进入
+		rolling.onmouseover = function(){
+			clearInterval(timer);
+		}
+
+		//鼠标离开
+		rolling.onmouseout = function(){
+			move();
+		}
+
+		function move(){
+			clearInterval(timer);
+			//运动
+			timer = setInterval(function(){
+				nowleft -= 5;
+				if(nowleft < -zhefandian){
+					nowleft = 0;
+				}
+				m_unit.style.left = nowleft + "px";
+			},20);
+		}
+	</script>
+</body>
+</html>

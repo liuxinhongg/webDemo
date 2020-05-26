@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 80px;
+			height: 80px;
+			background-color: gold;
+			position: absolute;
+			left: 100px;
+			top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		//得到盒子和按钮
+		var oDiv = document.getElementById("box");
+		//信号量
+		var nowleft = 100;
+
+		//我们让盒子运动到600自动停止
+		var timer = setInterval(function(){
+			nowleft += 7;
+			if(nowleft > 600){
+				nowleft = 600;
+				clearInterval(timer);
+			}
+			oDiv.style.left = nowleft + "px";
+			console.log(nowleft);
+		},20);
+	</script>
+</body>
+</html>

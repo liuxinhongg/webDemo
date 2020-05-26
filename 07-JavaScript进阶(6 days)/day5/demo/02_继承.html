@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//People类、Student类
+		//Student继承People，Student能够拥有所有people的属性、方法；并且还能自己丰富一些。
+
+		function People(name,age,sex){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		People.prototype.sayHello = function(){
+			alert("你好我是人" + this.name);
+		}
+		People.prototype.chifan = function(){
+			alert("我吃饭了！mia mia");
+		}
+
+
+		function Student(name,age,sex,xuehao,xiaohonghuageshu){
+			// People.apply(this , arguments);
+			//重新执行一次自己的构造器，自己的constructor是People
+			this.constructor.apply(this , arguments);
+			this.xuehao = xuehao;
+			this.xiaohonghuageshu = xiaohonghuageshu;
+		}
+		//核心语句，继承的实现全靠这条语句了：
+		Student.prototype = People.prototype;
+
+		Student.prototype.sayHello = function(){
+			alert("你好我是小学生，我的学号是" + this.xuehao);
+		}
+		Student.prototype.study = function(){
+			alert("好好学习，天天向上");
+		}
+		Student.prototype.lol = function(){
+			alert("玩儿英雄联盟啊！");
+		}
+
+		 var xiaohong = new Student("小红",11,"女",20160001,4);
+		 alert(xiaohong.name);
+		// console.log(xiaohong.constructor);
+		// xiaohong.lol();
+		// xiaohong.chifan();
+		// xiaohong.sayHello();
+
+		// var daming = new People("大明",31,"男");
+		// daming.sayHello();
+	</script>
+</body>
+</html>

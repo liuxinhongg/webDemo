@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				border-radius: 50%;
+				border: 1px solid black;
+			    animation: zhuan 3s linear 0s infinite;
+			}
+			@-webkit-keyframes zhuan{
+				from{transform: rotate(0deg);}
+				to{transform: rotate(360deg);}
+			}
+			img:hover{
+				/*让动画暂停*/
+				animation-play-state: paused;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/xiaoming.png"/>
+	</body>
+</html>

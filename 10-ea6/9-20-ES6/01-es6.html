@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+		/*ul{
+			list-style: none;
+		}*/
+			li{
+				list-style: none;
+				width: 300px;
+				height: 100px;
+				background: yellow;
+			}
+			li p{
+				width: 300px;
+				height: 30px;
+				background: palegreen;
+			}
+		</style>
+	</head>
+	<body>
+		<ul></ul>
+		<script type="text/javascript">
+//		ES6和node.js都是默认开启严格模式的
+		//模板字符串
+			var obj={
+				name:"张三",
+				age:19
+			}
+			var str=`<li>
+			            <p>${obj.name}</p>
+			            <p>${obj.age}</p>
+			
+			           </li>`
+			document.querySelector("ul").innerHTML=str;
+			
+//			for(var i=0;i<10;i++){
+//				
+//			}
+//			console.log(i)//10
+			
+//			for(let i=0;i<10;i++){
+//			
+//				console.log(i);//从0到9
+//			}
+//				console.log(i);//报错
+
+
+            {
+            	let a=1;
+             var b=2;
+             console.log(a);
+            }
+//           console.log(a);
+             console.log(b);
+			
+		</script>
+	</body>
+</html>

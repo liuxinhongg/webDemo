@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 258px;
+				height: 258px;
+				border: 1px solid #000000;
+				perspective: 500px;
+			}
+			img{
+				border: 1px solid #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="点我"/>
+		<div>
+			<img src="img/xiaoming.png"/>
+		</div>
+		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/velocity.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("input").click(function(){
+				$("img").velocityY({
+					"rotateX":"40deg",
+					"rotateY":"40deg",
+					"transteZ":"300px",
+					"opacity":0
+				},2000,function(){
+					//回调函数
+					$(this).fadeOut();
+				});
+			})
+			
+//			$("input").click(function(){
+//				$("p").velocityY({
+//					"backgroundColor":"black"
+//				},2000);
+//			})
+		</script>
+	</body>
+</html>

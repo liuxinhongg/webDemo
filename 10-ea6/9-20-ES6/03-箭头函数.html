@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[1,2,3,4];
+//			arr.forEach(function(v){
+//				console.log(v);
+//			});
+			//箭头函数的使用，省略了function和小括号和大括号
+		/*	arr.forEach(v=>console.log(v));//1234
+			//多个参数要加小括号
+			arr.forEach((v,k)=>console.log(v,k));
+			//多个语句需要加大括号
+			arr.forEach((v,k) => {
+				console.log(v);
+				console.log(k);
+			})
+			*/
+			
+			//下面是一个函数，x是参数，不用写return
+			var fn=x=>x*x;
+//			var fn=function(x){
+//				 return x*x;
+//			}
+			console.log(fn(3));//9
+			
+//			不用传参数  默认为return 值为5
+            var fn1=()=>5;//相当返回值是5
+            console.log(fn1());//5
+			
+			
+			var obj={
+				birth:1995,
+				getAge:function(){
+					console.log(this.birth);
+					var self=this;
+//					var fn=function(){
+//						return new Date().getFullYear()-self.birth;
+//					}
+					var fn=()=>new Date().getFullYear()-this.birth;
+					return fn();
+				}
+			}
+			console.log(obj.getAge());//22
+		</script>
+	</body>
+</html>

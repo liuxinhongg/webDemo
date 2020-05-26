@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var str = 'www.ucai.cn';
+// var str = 'www.ucai.com';
+console.log(str.replace(/ucai\.cn/, 'ucai.com'));
+console.log(str.replace(/ucai\.cn/, function() {
+	return 'ucai.com';
+}))
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.ajax({
+			type: "post",
+			url: "https://restapi.amap.com/v4/geofence/meta?key=c398b97b85b5ff60857ea69e21f67aa7",
+			data: {
+				"name": "西安钟楼",
+				"center": "115.672126,38.817129",
+				"radius": "1000",
+				"enable": "true",
+				"valid_time": "2055-05-19",
+				"repeat": "Mon,Tues,Wed,Thur,Fri,Sat,Sun",
+				"time": "00:00,11:59;13:00,20:59",
+				"desc": "测试围栏描述",
+				"alert_condition": "enter;leave"
+			},
+			async: true,
+			success: function(res) {
+				console.log(res)
+			}
+		});
+	</script>
+
+</html>

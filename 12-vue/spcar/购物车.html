@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">购物车</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    全选
+                                    <input @click="selAll" type="checkbox" name="" id="all">
+                                </th>
+                                <th>
+                                    商品名称
+                                </th>
+                                <th>
+                                    商品价格
+                                </th>
+                                <th>
+                                    商品数量
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in list">
+                                <td>
+                                    <input v-bind:checked="item.check" type="checkbox" @click="item.check = !item.check">
+                                </td>
+                                <td>
+                                   {{item.name}}
+                                </td>
+                                <td>
+                                    {{item.price}}
+                                </td>
+                                <td>
+                                    <button @click="reduce(index)">-</button>
+                                    <input type="text" v-model="item.count" style="width: 25px; text-align: center">
+                                    <button @click="add(index)">+</button>
+                                </td>
+                                <td>
+                                    <button @click="remove(index)" type="button" class="btn btn-danger">移除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="panel-footer text-right">
+                    总价<span>{{totalPrice}}</span>元
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            list: [{
+                id: 1,
+                name: 'iPhone 7',
+                price: 6188,
+                count: 1,
+                check: true,
+            },
+            {
+                id: 2,
+                name: 'iPad Pro',
+                price: 5888,
+                count: 1,
+                check: false,
+            },
+            {
+                id: 3,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: true,
+            },
+            {
+                id: 4,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: false,
+            },
+            {
+                id: 5,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: true,
+            },
+            {
+                id: 6,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: true,
+            },
+            {
+                id: 7,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: true,
+            },
+            {
+                id: 8,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: false,
+            },
+            {
+                id: 9,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: false,
+            },
+            {
+                id: 10,
+                name: 'MacBook Pro',
+                price: 21488,
+                count: 1,
+                check: false,
+            }
+            ]
+
+        },
+        methods: {
+            // 增加商品
+            add(index){
+               this.list[index].count++ ;
+            },
+            // 减少商品
+            reduce(index){
+                this.list[index].count--; 
+                if(this.list[index].count==-1){
+                    this.list.splice(index, 1);
+                }
+            },
+            // 移除商品
+            remove(index){
+                this.list.splice(index,1)
+            },
+            // 全选
+            selAll(){
+                let isAll = document.querySelector("#all");
+                if(isAll.checked){
+                    this.list.forEach(item => {
+                        item.check = true;
+                    });
+                }else{
+                    this.list.forEach(function(item){
+                        item.check = false;
+                    })
+                }
+            },
+        },
+        computed:{
+            totalPrice(){
+                let total = 0;
+                this.list.forEach(item => {
+                    if(item.check){
+                        total += item.price*item.count
+                    }
+                })
+                return total;
+            }
+        }
+    })
+</script>
+
+</html>

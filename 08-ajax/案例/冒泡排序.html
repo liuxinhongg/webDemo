@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [2,5,66,31,45,9,3];
+        
+        for(var i=0;i<arr.length;i++){
+            for(var j=0;j<i;j++){      
+                if(arr[i]<arr[j]){
+                    var x = arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=x;
+                }
+            }
+        }
+        console.log(arr)
+
+    
+    </script>
+</body>
+</html>

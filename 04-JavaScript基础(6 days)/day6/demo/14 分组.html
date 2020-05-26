@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var reg = /ab(cd)\1e/; // abcdcde
+console.log(reg.test('abcdcde'))
+console.log(reg.test('abcde'))
+
+//
+// var result = 'abcde'.replace(/ab(cd)e/, 'ab$1$1e')
+var result = 'abcde'.replace(/ab(cd)e/, function (match, $1) {
+	return 'ab' + $1 + $1 + 'e';
+})
+console.log(result)
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <hello>
+
+            <div slot="one">我替换第1个slot</div>
+            <div slot="two">我替换第2个slot</div>
+            <div slot="three">我替换第3个slot</div>
+            电话福克斯的机会福克斯
+        </hello>
+    </div>
+    <script>
+        Vue.component('hello', {
+            template: `
+            <div>
+                <span>首页</span>
+                <slot name="two"> <h3>我是第2个位置</h3> </slot>
+                <slot name="one"> <h3>我是第一个位置</h3> </slot>
+                <slot name="three"> <h3>我是第3个位置</h3> </slot>
+                <slot>受到过分过分</slot>
+            </div>
+            `
+        })
+        new Vue({
+            el: "#app",
+        })
+    </script>
+</body>
+
+</html>

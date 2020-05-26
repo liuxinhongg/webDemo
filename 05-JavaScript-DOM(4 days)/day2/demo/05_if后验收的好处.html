@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		img{
+			position: absolute;
+			left: 577px;
+			top: 100px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<input type="button"  value="动" id="btn"/>
+	<img src="images/songhuiqiao.jpg" alt="" id="tutu"/>
+
+	<script type="text/javascript">
+		var img = document.getElementById("tutu");
+		var btn = document.getElementById("btn");
+
+		var l = 577;
+
+		btn.onclick = function(){
+			// if(l > 0){
+			// 	l-=40;
+			// }else{
+			// 	l = 0;
+			// }
+			// img.style.left = l + "px";
+
+			l -= 40;
+			if(l < 0){
+				l = 0;
+			}
+			img.style.left = l + "px";
+		}
+	</script>
+</body>
+</html>

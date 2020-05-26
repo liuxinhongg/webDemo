@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="allmap" style="height:500px;width:500px;"></div>
+		<div class="box">
+			
+		</div>
+	</body>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=11KwM4SL3gsDG3y1NFOc7QjEncqwmTlK"></script>
+	<script type="text/javascript">
+		var box = document.querySelector(".box");
+		var map = new BMap.Map("allmap");
+		var point = new BMap.Point(116.331398, 39.897445);
+		map.centerAndZoom(point, 12);
+		map.enableScrollWheelZoom(true);
+		var geo = new BMap.Geocoder()
+			// 将地址解析结果显示在地图上，并调整地图视野
+		geo.getPoint("西开公司沣禾小区", function(point) {
+			if (point) {
+				//经度
+				var pointx = point.lng;
+				//纬度
+				var pointy = point.lat;
+				
+				box.innerHTML= pointx+"----"+pointy
+			}
+		},"西安");
+	</script>
+
+</html>

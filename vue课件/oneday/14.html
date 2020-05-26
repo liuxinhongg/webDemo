@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <hello>
+            <div>1111111</div>
+            <div>1111111</div>
+        </hello>
+    </div>
+    <template id="box">
+        <div>
+            <h2>我是h2开始的部分</h2>
+            <slot></slot>
+            <h1>hjkl</h1>
+        </div>
+    </template>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {},
+            components: {
+                'hello': {
+                    template: "#box"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

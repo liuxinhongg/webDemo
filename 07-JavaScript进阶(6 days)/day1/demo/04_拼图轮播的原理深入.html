@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			position: absolute;
+			background: url(images/lunbo/0.jpg);
+			top: 500px;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+
+	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+	<script type="text/javascript">
+		$("div").each(function(i){
+			$(this).css({
+				"left":500,
+				"top" : 500,
+				"background-position" : -i % 3 *200 + "px " + -parseInt(i / 3) * 200 +"px"
+			})
+			.delay(i * 50)
+			.animate({"left":i % 3 *200 , "top":parseInt(i / 3) * 200},300);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <hello-world></hello-world>
+            <hello-world></hello-world>
+            <hello-world></hello-world>
+            <hello-world></hello-world>
+        </div>
+    </div>
+    <script type="x-template" id="box">
+        <div>
+            <h1 @click="change">标题：{{title}}</h1>
+            <ul>
+                <li>1111111</li>
+                <li>2222222</li>
+                <li>3333333</li>
+            </ul>
+        </div>
+    </script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                seen: false,
+                message: "发分工会尽快了",
+
+            },
+            components: {
+                'HelloWorld': {
+                    template: "#box",
+                    data() {
+                        return {
+                            title: "hello world",
+                        }
+                    },
+                    methods: {
+                        change() {
+                            this.title = "changed"
+                        }
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

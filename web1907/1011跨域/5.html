@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1/toutiao/index",
+			data:{
+				"type":"shehui",
+				"key":"c14887fe64c3c92f7cd9507b34e01257"
+			},
+			async:true,
+			 success:function(res){
+			 	console.log(res)
+			 }
+		});
+		
+	</script>
+</html>

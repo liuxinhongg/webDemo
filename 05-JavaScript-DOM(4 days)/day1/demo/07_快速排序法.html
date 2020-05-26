@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = [6,4,5,7,8,2,2,7,9];
+
+		console.log(arr);
+
+		function quicksort(start,end){
+			//验证有效性
+			if(start >= end){
+				return;
+			}
+			//标志
+			var pivot = arr[start];
+			//哨兵
+			var left = start;
+			var right = end;
+			
+			while(left != right){
+				//让右边哨兵移动，直到找到了一个数字小于等于了标志
+				while(arr[right] >= pivot && right > left){
+					right--;
+				}
+				
+				while(arr[left] <= pivot && left < right){
+					left++;
+				}
+
+				if(left < right){
+					//交换这个两个数字的位置
+					var temp = arr[right];
+					arr[right] = arr[left];
+					arr[left] = temp;
+				}
+					
+			}
+			//left和right相同了		
+			//交换右哨兵的数字和标志
+			arr[start] = arr[left];
+			arr[left] = pivot;
+
+			quicksort(start , left - 1);
+			quicksort(right + 1,end);
+		}
+
+		quicksort(0,arr.length - 1);
+		
+		console.log(arr);
+	</script>
+</body>
+</html>

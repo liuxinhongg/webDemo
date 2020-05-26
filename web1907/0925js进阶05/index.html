@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		function  People(name,age,sex){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		
+		People.prototype.sayHello = function(){
+			alert("|你好啊，我是人类"+this.name);
+		}
+		
+		function Student(name,age,sex,xuehao,xiaohonghua){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.xuehao = xuehao;
+			this.xiaohonghua = xiaohonghua;
+		}
+		
+		Student.prototype = new People();
+		 
+		Student.prototype.study = function(){
+			alert("好好学习")
+		}
+		Student.prototype.sayHello = function(){
+			alert("哈哈哈我是学生"+this.name);
+		}
+		var xiaoming = new Student("小明",10,"男",112336645454,"10朵");
+		var dawei = new People("大卫",80,"男")
+//		xiaoming.sayHello();
+//		xiaoming.study();
+//		console.log(xiaoming)
+//		dawei.sayHello();
+		
+		console.log(xiaoming.__proto__)
+		console.log(People.prototype)
+	</script>
+</html>

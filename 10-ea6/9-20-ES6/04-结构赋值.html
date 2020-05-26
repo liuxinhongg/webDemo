@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		    //1
+			var  {a,b}={a:"小妞",b:"小西"}
+			console.log(a,b);
+			//2
+			function fun(){
+				return {name:"小王"}
+			}
+			var {name}=fun();
+			console.log(name);
+			
+			//3
+			var [name,age]=["传奇",22];
+			console.log(name,age);
+			var [a,b,c,d]=["东","南","西","北"];
+			console.log(a,b,c,d);//东 南 西 北
+			console.log([a,b,c,d]);
+		</script>
+	</body>
+</html>
